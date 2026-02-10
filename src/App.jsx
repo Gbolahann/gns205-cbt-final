@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, ChevronLeft, ChevronRight, CheckCircle, Menu, X, BookOpen, Award, Sparkles, BrainCircuit, Loader2, AlertTriangle, Flame } from 'lucide-react';
+// import { Analytics } from '@vercel/analytics/react'; // UNCOMMENT THIS LINE WHEN DEPLOYING TO VERCEL
 
 /**
  * UNIVERSITY THEME CSS
@@ -1432,6 +1433,7 @@ const ResultScreen = ({ studentName, answers, questions, onRestart }) => {
            score -= 1; // Wrong (Negative marking)
          }
       }
+      // Unanswered questions get 0 change
     });
     return score;
   };
@@ -1916,6 +1918,7 @@ export default function App() {
   return (
     <>
       <style>{appStyles}</style> {/* Inject CSS directly */}
+      {/* <Analytics /> */} {/* UNCOMMENT THIS LINE WHEN DEPLOYING TO VERCEL */}
       {gameState === 'start' && (
         <StartScreen 
           studentName={studentName}
