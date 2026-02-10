@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, ChevronLeft, ChevronRight, CheckCircle, Menu, X, BookOpen, Award, Sparkles, BrainCircuit, Loader2, AlertTriangle, Flame } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 /**
  * UNIVERSITY THEME CSS
@@ -1520,7 +1521,7 @@ const ResultScreen = ({ studentName, answers, questions, onRestart }) => {
           const planText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Unable to generate plan.";
           setStudyPlan(planText);
 
-      } catch (error) {
+      } catch {
           setStudyPlan("Could not generate study plan at this time.");
       } finally {
           setLoadingStudyPlan(false);
@@ -1916,6 +1917,7 @@ export default function App() {
   return (
     <>
       <style>{appStyles}</style> {/* Inject CSS directly */}
+      <Analytics />
       {gameState === 'start' && (
         <StartScreen 
           studentName={studentName}
